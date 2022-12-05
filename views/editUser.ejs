@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>update</title>
+
+    <!-- Font Icon --> 
+   <link rel="stylesheet" href="/css/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="margin: 0%;background-color: black;">
+<div class="main" style="background-color: black;" >
+    <!-- Sing in  Form -->
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="/images/R (1).png" alt="sing up image"></figure>
+                    <!-- <a href=""  class="signup-image-link">Create an account </a> -->
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Update login</h2>
+                    <p style="color:red ; align-items: center; margin-left: 100px;"><%=locals.error%></p>
+                    <form method="post" class="register-form" id="login-form" action="" >
+                        <div class="form-group">
+                            <label for="firstname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="firstname" id="your_email" class="input-text" placeholder="FirstName" required value="<%= user.firstname%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="lastname" id="your_pass" placeholder="LastName" required value="<%= user.lastname%>"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="email" name="email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Email" required value="<%= user.email%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="your_pass" placeholder="Password" required value="<%= user.password%>"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label><br>
+                            <a href="/adminlogin">Back To Home</a>
+                        </div>
+                        <p style="color:red ;"><%=locals.wrong%></p>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Update"/>
+ 
+                        </div>
+                       
+                       
+                    </form>
+<!--                     
+                    <div class="social-login">
+                        <span class="social-label">Or login with</span>
+                        <ul class="socials">
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
