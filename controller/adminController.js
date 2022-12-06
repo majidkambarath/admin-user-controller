@@ -29,14 +29,26 @@ const adminlogin= async(req,res)=>{
 }
 //add user
 const addUser = async(req,res)=>{
-    //session
-    try {
-        res.render('../views/addUser.ejs')
-        
-    } catch (error) {
-        console.log(error.message);
-        
+    if(req.session.admin){
+        try {
+                res.render('../views/addUser.ejs')
+                
+            } catch (error) {
+                console.log(error.message);
+                
+            }
+    }else{
+        res.redirect('/')
+    
     }
+    //session
+    // try {
+    //     res.render('../views/addUser.ejs')
+        
+    // } catch (error) {
+    //     console.log(error.message);
+        
+    // }
     // res.render('addUser')
 }
 
@@ -71,36 +83,46 @@ try {
 
 // edit functionality
 const editUser = async(req,res)=>{
-    
     //session
-    try {
-        // res.render('../views/editUser.ejs')
-        const id = req.query.id;
-        const userDate = await User.findById({ _id: id})
-        if(userDate){
-            res.render('../views/editUser.ejs',{user:userDate})
-            console.log("edit succuess");
-        }else{
-            res.redirect('/adminlogin')
+    if(req.session.admin){
+        try {
+            // res.render('../views/editUser.ejs')
+            const id = req.query.id;
+            const userDate = await User.findById({ _id: id})
+            if(userDate){
+                res.render('../views/editUser.ejs',{user:userDate})
+                // res.session.user.destroy()
+                console.log("edit succuess");
+            }else{
+                res.redirect('/adminlogin')
+            }
+        } catch (error) {
+            console.log(error.message);
         }
-    } catch (error) {
-        console.log(error.message);
+    }else{
+        res.redirect('/')
     }
+   
 }
 
 // update users
 const updateUser = async(req,res)=>{
     //session
- 
-    try {
-    const userDate = await User.findByIdAndUpdate({_id:req.query.id},{$set:{firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password}});
-         console.log('updte sucees'); 
-    res.redirect('/adminlogin')
-
-    } catch (error) {
-        console.log(error.message);
+    if(req.session.admin){
+        try {
+            const userDate = await User.findByIdAndUpdate({_id:req.query.id},{$set:{firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password}});
+                 console.log('updte sucees'); 
+            res.redirect('/adminlogin')
         
+            } catch (error) {
+                console.log(error.message);
+                
+            }
+    }else{
+        res.redirect('/')
     }
+ 
+   
 }
 // user delete
 const deleteUser = async(req,res)=>{
