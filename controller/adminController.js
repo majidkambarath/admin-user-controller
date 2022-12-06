@@ -71,6 +71,7 @@ try {
 
 // edit functionality
 const editUser = async(req,res)=>{
+    
     //session
     try {
         // res.render('../views/editUser.ejs')
