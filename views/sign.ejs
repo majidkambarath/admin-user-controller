@@ -30,7 +30,7 @@
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
                 <p style="color:red ; align-items: center; margin-left: 100px;"><%=locals.error%></p>
 
-                <form  action="/sign" method="post" role="form"  id="form" class="mx-1 mx-md-4"  >
+                <form  action="/userHome" method="post" role="form"  id="form" class="mx-1 mx-md-4"  >
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw" aria-hidden="true"></i>
@@ -89,6 +89,12 @@
     </div>
   </div>
 </section>
+<!-- window clean -->
+<script>
+  if ( window.history.replaceState ) {
+window.history.replaceState( null, null, window.location.href );
+}
+</script>
    
  {{!-- linking javaScript file --}}
  <script src="/public/javaScript/javaScript.js"></script>
@@ -114,11 +120,11 @@
         var firstname = document.getElementById('firstname').value ;
            if(firstname.length == ""){
             firstnameError.innerHTML='Name is required'
-            fristname.focus()
+          fristname.focus()
            return false
           }
           if(!firstname.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
-      firstnameError.innerHTML ='write full name'
+      firstnameError.innerHTML ='please enter valid name'
       return false;
           }
           firstnameError.innerHTML = ''
@@ -156,7 +162,7 @@
     function passwordValidate(){
     var password = document.getElementById('password').value
     if(password.length < 3){
-      passwordError.innerHTML = 'password is not required'
+      passwordError.innerHTML = 'password is required'
       password.focus()
       return false;
     }

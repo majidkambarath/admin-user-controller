@@ -11,7 +11,7 @@ const app = express();
 app.use(cookiesParser());
 // console.log('running');
 
-const port = process.env.port||3030;
+const port = process.env.port||2222;
 // installiton sign-up page
 app.use(express.json());
 app.use(bodyparser.urlencoded({extended:true}))
@@ -45,5 +45,5 @@ app.use(userRouter);
 app.use(adminRouter);
 
 app.listen(port,()=>{
-    console.log("losting to the sever on http://localhost:3030");
+    console.log("losting to the sever on http://localhost:4040");
 })

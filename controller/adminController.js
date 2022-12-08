@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 //admin page
 const admin =(req,res)=>{
     if(req.session.admin){
-        res.redirect('/adminlogin')
+        res.redirect('/admin/adminlogin')
     }
     else{
         res.render('admin')
@@ -10,7 +10,7 @@ const admin =(req,res)=>{
  
 }
 //admin home page
-const adminlogin= async(req,res)=>{
+const  adminlogin= async(req,res)=>{
     try { 
         const userDate = await User.find({});
         
